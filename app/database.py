@@ -2,7 +2,7 @@ from typing import Optional, Dict, Any
 from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorDatabase
 from datetime import datetime, timezone
 from bson import ObjectId
-from config import settings
+from .config import settings
 
 _client: Optional[AsyncIOMotorClient] = None
 

@@ -8,6 +8,6 @@ class Settings(BaseSettings):
     MONGO_URL: str
     MONGO_DB: str = "chatdb"
 
-    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
+    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
 settings = Settings()
