@@ -17,7 +17,7 @@ def get_database() -> AsyncIOMotorDatabase:
         _client = AsyncIOMotorClient(settings.MONGO_URL)
     return _client[settings.MONGO_DB]
 
-def serialize_message(doc dict) -> Dict:
+def serialize_message(doc: dict) -> Dict:
     """
     Serializa um documento do MongoDB para um formato JSON
     """
