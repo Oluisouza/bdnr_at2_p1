@@ -58,7 +58,7 @@ async def ws_room(ws: WebSocket, room: str):
         items.reverse()
         await ws.send_json({
             "type": "history",
-            "items": [MessageOut(i) for i in items]
+            "items": [MessageOut(**i).model_dump(mode='json') for i in items]
         })
 
         while True:
@@ -74,7 +74,7 @@ async def ws_room(ws: WebSocket, room: str):
             doc["_id"] = res.inserted_id
 
             serialized_doc = serialize_message(doc)
-            await manager.broadcast(room, {"type": "message", "item": MessageOut(serialized_doc).model_dump()})
+            await manager.broadcast(room, {"type": "message", "item": MessageOut(**serialized_doc).model_dump(mode='json')})
     except WebSocketDisconnect:
         manager.disconnect(room, ws)
 
